@@ -19,6 +19,5 @@ def test_open_login_page_and_check_forms(browser):
 	page = MainPage(browser, link)
 	page.open()
 	page.go_to_login_page()
-	login_link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
-	login_page = LoginPage(browser, login_link)
+	login_page = LoginPage(browser, browser.current_url)
 	login_page.should_be_login_page()
