@@ -9,6 +9,11 @@ class ProductPage(BasePage):
 		self.book_name_matched()
 		self.book_price_matched()
 
+	def add_product_to_basket_no_alert(self):
+		self.click_button_add_to_basket()
+		self.book_name_matched()
+		self.book_price_matched()
+
 	def get_book_name(self):
 		return self.browser.find_element(*Products.BOOK_TITLE).text
 

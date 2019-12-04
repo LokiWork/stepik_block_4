@@ -12,7 +12,7 @@ class BasePage():
 		self.browser.implicitly_wait(timeout)
 
 	def go_to_login_page(self):
-		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
 		link.click()
 
 	def should_be_login_link(self):
@@ -59,3 +59,12 @@ class BasePage():
 		except TimeoutException:
 			return True
 		return False
+
+	def wait_and_click_on_element(self, how, what, timeout=4):
+		WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((how, what))).click()
+
+	def click_on_button_basket(self):
+		self.browser.find_element(*BasePageLocators.BUTTON_BASKET).click()
+
+	def should_be_authorized_user(self):
+		assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user"
